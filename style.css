@@ -38,4 +38,7 @@ body{
     grid-template-columns: repeat(2, 2fr);
 }
 
+#ulRight{
+   list-style-type: none; 
+}
 

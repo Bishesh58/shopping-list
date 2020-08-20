@@ -2,6 +2,7 @@ var input = document.getElementById("userInput");
 var button = document.getElementById("enter");
 var ul = document.querySelector("ul");
 var li = document.getElementsByTagName('li');
+var ulright = document.getElementById('ulRight');
 
 
 function inputLength (){
@@ -29,6 +30,25 @@ function addList(){
     li.appendChild(document.createTextNode(input.value));
     ul.appendChild(li);
     input.value = "";
+    
+    var liRight = document.createElement('li');
+    btnDelete = document.createElement('button');
+    btnDelete.appendChild(document.createTextNode("Delete!"));
+    ulright.appendChild(liRight);
+    liRight.appendChild(btnDelete);
+
+
+
+    btnDelete.onclick = function(){
+
+        ulright.removeChild(liRight);
+        ul.removeChild(li);
+    }
+
 }
+ 
+
+
+
 
 
