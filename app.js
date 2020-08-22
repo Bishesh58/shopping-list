@@ -37,14 +37,11 @@ function addList(){
     ulright.appendChild(liRight);
     liRight.appendChild(btnDelete);
 
-
-
     btnDelete.onclick = function(){
 
         ulright.removeChild(liRight);
         ul.removeChild(li);
     }
-
 }
  
 
