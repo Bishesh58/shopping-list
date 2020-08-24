@@ -1,42 +1,98 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
 
 body{
-    font-family: 'Baloo Tamma 2', cursive;
+    font-family: 'Baloo Tamma 2', cursive, Arial, Helvetica, sans-serif;
+    min-height: 100vh;
+    background-image: linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1);
 }
 
-.header {
-  margin-top: 5%;
-  margin-left: 40%;
-  width: 25%;
-  display: grid;
-  gap: 10px;
-  grid-template-columns: repeat(1, 1fr);
-  justify-content: center;
-  text-align: center;
-  border-radius: 10px;
-  box-shadow: 10px 10px 8px #888888;
+header{
+    font-size: 1.5rem;
 }
 
-.lists{
-    margin: 80px;
-    display: grid;
-    grid-template-columns: repeat(autofill, minmax(200px, 1fr));
-}
-
-.sectionInput{
+header, form{
+    min-height: 20vh;
     display: flex;
-    justify-self: center;
-    padding: 5px;
-    border-top:2px  solid gray;
-    border-bottom:2px  solid gray;
-}
-.sectionLists {
-    display: grid;
-    gap: 10px;
-    justify-self: center;
-    grid-template-columns: repeat(2, 2fr);
+    justify-content: center;
+    align-items: center;
 }
 
-#ulRight{
-   list-style-type: none; 
+form input, form button{
+    padding: 0.5rem;
+    font-size: 1.8rem;
+    border: none;
+    background:white;
+    
 }
 
+form button{
+    color: white;
+    background: #d78db7;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+form button:hover{
+    color: white;
+    background: green;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.task-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.task-list{
+    min-width: 30%;
+    list-style: none;
+}
+
+.tasks{
+    margin: 0.5rem;
+    background: white;
+    color: black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.5s ease;
+}
+
+.tasks li{
+    flex: 1;
+}
+
+.complete-btn, .delete-btn{
+    border: none;
+    padding: 1rem;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.complete-btn:hover{
+    color: green;
+}
+.delete-btn:hover{
+    color: red;
+}
+
+.task-item{
+    padding: 0 0.5rem;
+}
+
+.fa-check-square, .fa-trash-alt{
+    pointer-events: none;
+}
+
+.completed{
+    text-decoration: line-through;
+}
+.colorChange > .complete-btn{
+    color: green;
+}

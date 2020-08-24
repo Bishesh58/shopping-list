@@ -1,51 +1,66 @@
-var input = document.getElementById("userInput");
-var button = document.getElementById("enter");
-var ul = document.querySelector("ul");
-var li = document.getElementsByTagName('li');
-var ulright = document.getElementById('ulRight');
+//SELECTORS
+const taskInput = document.querySelector(".task-input");
+const addButton = document.querySelector(".add-button");
+const taskList = document.querySelector(".task-list");
 
 
-function inputLength (){
-   return input.value.length;
-}
-
-function captureInput(event){
-    if(event.keyCode === 13 && inputLength() > 0){
+//checking if input is empty
+function inputLength(e){
+    //this is to prevent submitting form (refreshing)
+    e.preventDefault();
+    if(taskInput.value.length > 0 ){
         addList();
     }
 }
 
-input.addEventListener('keypress', captureInput);
+//EVENT LISTENERS
+addButton.addEventListener('click', inputLength);
+taskList.addEventListener('click', deleteCheck);
 
-function buttonAdd(){
-    if(inputLength() > 0){
-        addList();
-    }
-}
 
-button.addEventListener('click', buttonAdd);
-
-function addList(){
-    var li = document.createElement('li');
-    li.appendChild(document.createTextNode(input.value));
-    ul.appendChild(li);
-    input.value = "";
+//FUNCTIONS
+function addList(ev){
     
-    var liRight = document.createElement('li');
-    btnDelete = document.createElement('button');
-    btnDelete.appendChild(document.createTextNode("Delete!"));
-    ulright.appendChild(liRight);
-    liRight.appendChild(btnDelete);
+    //create Div & li and append li to Div
+    const taskDiv = document.createElement("div");
+    taskDiv.classList.add('tasks');
+    const newTask = document.createElement("li");
+    newTask.classList.add("task-item");
+    newTask.innerText = taskInput.value;
+    taskDiv.appendChild(newTask);
 
-    btnDelete.onclick = function(){
+    //create completed button with class and append to Div 
+    const completedButton = document.createElement("button");
+    completedButton.innerHTML ='<i class="fas fa-check-square"></i>';
+    completedButton.classList.add("complete-btn");
+    taskDiv.appendChild(completedButton);
 
-        ulright.removeChild(liRight);
-        ul.removeChild(li);
+    //create delete button with class & append to Div
+    const deleteButton = document.createElement("button");
+    deleteButton.innerHTML = '<i class="far fa-trash-alt"></i>';
+    deleteButton.classList.add("delete-btn");
+    taskDiv.appendChild(deleteButton); 
+
+    //now append everything to actual ul list
+    taskList.appendChild(taskDiv);
+    //clear the input
+    taskInput.value = "";
+}
+
+
+function deleteCheck(ev){
+    const item = ev.target;
+
+//delete tasks
+    if(item.classList[0] === 'delete-btn'){
+        const div = item.parentElement;
+        div.remove();
+    }
+
+//toggle checkmark
+    if(item.classList[0] === 'complete-btn' || item.classList[0] === 'task-item'){
+        const task = item.parentElement;
+        task.classList.toggle('completed');
+        task.classList.toggle('colorChange');
     }
 }
- 
-
-
-
-
-
